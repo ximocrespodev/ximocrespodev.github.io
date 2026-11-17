@@ -68,13 +68,24 @@ h2{font:700 clamp(1.9rem,4vw,2.6rem)/1.1 var(--display);letter-spacing:-.025em;m
 @media(max-width:760px){.about{grid-template-columns:1fr;gap:1.5rem}}
 
 /* proyectos */
-.proj{display:flex;justify-content:space-between;align-items:flex-end;gap:2rem;flex-wrap:wrap;background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:1.75rem 2rem;text-decoration:none;transition:border-color .25s,transform .25s}
+.proj{display:flex;justify-content:space-between;align-items:flex-end;gap:2rem;flex-wrap:wrap;background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:1.75rem 2rem;transition:border-color .25s,transform .25s}
 .proj:hover{border-color:var(--accent);transform:translateY(-3px)}
 .proj h3{font:700 1.6rem var(--display);letter-spacing:-.02em}
 .proj p{color:var(--muted);max-width:34rem;margin-top:.4rem}
 .proj .chips{margin-top:1rem;gap:.4rem}
 .proj .chips li{background:var(--bg);font-size:.85rem;padding:.25rem .7rem}
-.proj .site{font-weight:600;color:var(--accent);border-bottom:2px solid currentColor}
+.proj-actions{display:flex;align-items:center;gap:1.25rem;flex-wrap:wrap}
+.proj .site{font-weight:600;color:var(--accent);text-decoration:none;border-bottom:2px solid currentColor;padding-bottom:1px;transition:opacity .2s}
+.proj .site:hover{opacity:.8}
+
+/* Botón llamativo de GitHub */
+.btn-github{display:inline-flex;align-items:center;gap:.55rem;padding:.65rem 1.25rem;border-radius:999px;background:var(--ink);color:var(--bg);font-weight:600;font-size:.95rem;text-decoration:none;border:1px solid var(--ink);box-shadow:0 4px 14px color-mix(in srgb,var(--ink) 18%,transparent);transition:transform .2s,background .2s,border-color .2s,box-shadow .2s}
+.btn-github:hover{transform:translateY(-2px);background:var(--accent);border-color:var(--accent);color:#fff;box-shadow:0 6px 20px color-mix(in srgb,var(--accent) 32%,transparent)}
+:root[data-theme="dark"] .btn-github:hover{color:#0a1126}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .btn-github:hover{color:#0a1126}}
+.btn-github svg{flex-shrink:0}
+.btn-github .arrow{transition:transform .2s}
+.btn-github:hover .arrow{transform:translate(2px,-2px)}
 
 /* experiencia */
 .timeline{border-left:2px solid var(--line);margin-left:.4rem}
@@ -177,14 +188,23 @@ footer.end{padding:2rem 0 3rem;color:var(--muted);font-size:.9rem}
 <section id="proyectos">
   <div class="wrap">
     <h2>Proyectos</h2>
-    <a class="proj" href="https://climora.es" target="_blank" rel="noopener">
+    <article class="proj">
       <div>
         <h3>CLIMORA</h3>
         <p>Estación meteorológica con Raspberry Pi conectada a servidores externos y publicada en WordPress con plugins. Proyecto de Grado Medio SMR.</p>
         <ul class="chips"><li>Raspberry Pi</li><li>WordPress</li><li>Plugins</li><li>Servidores externos</li></ul>
       </div>
-      <span class="site">climora.es</span>
-    </a>
+      <div class="proj-actions">
+        <a class="site" href="https://climora.es" target="_blank" rel="noopener">climora.es</a>
+        <a class="btn-github" href="https://github.com/ximocrespodev/CLIMORA" target="_blank" rel="noopener" aria-label="Ver código fuente de CLIMORA en GitHub">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/>
+          </svg>
+          <span>Código en GitHub</span>
+          <span class="arrow" aria-hidden="true">↗</span>
+        </a>
+      </div>
+    </article>
   </div>
 </section>
 
